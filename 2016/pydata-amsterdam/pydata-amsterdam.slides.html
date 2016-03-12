@@ -253,7 +253,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>How big are your banks?</h1></p>
-<h2>The ones in the U.S. are <em>pretty</em> big!</h2><h3>Dr. David R. Pugh</h3><h4>PyData Amsterdam</h4>
+<h2>The ones in the U.S. are <em>pretty</em> big!</h2><h3>Dr. David R. Pugh</h3><p><img src="./assets/img/pydata-logo-amsterdam-2016.png" alt="PyData Amsterdam"></p>
 <h4>Amsterdam, The Netherlands, 12-13 March 2016</h4><p><img src="../../assets/img/INET_Brand_Final-01.png" alt="Institute for New Economic Thinking" width=500></p>
 
 </div>
@@ -264,36 +264,47 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2> Motivation </h2>
+<h1> Motivation </h1>
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Benefits of banking sector concentration, such as increased profitability, economies of scale, and increased diversification accrue primarily to individual banks (and their shareholders).</p>
+<p>I am currently working on building data-driven, large-scale, agent-based/multi-agent systems models of economic systems. Banks are important part of modern economic systems and I would like my banking sector to be realistically calibrated.</p>
+<p><strong>Primary motivation is to establish "facts on the ground" concerning the distribution of U.S. banks and how it has evolved (or not!) over time as a precursor to calibrating my simulation models.</strong></p>
 
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Costs of increased banking sector concentration, meanwhile, are largely social. These might include increased propensity to take risks due to moral hazard/adverse selection issues created by explicit deposit insurance arrangements as well as implicit bail-out arrangements for banks deemed "too big to fail," decreased competitiveness in the banking sector, etc.</p>
+<h2>I have a hypothesis!</h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I suspect that the upper tail of the bank size distribution might follow a power law...</p>
+$$ p(x; x_{min}, \alpha) = \left(\frac{\alpha - 1}{x_{min}}\right)\left(\frac{x_{min}}{x}\right)^{\alpha} $$<p>...more specifically, I think that Zipf's Law (i.e., power law with $\alpha = 2$) is a pretty decent null hypothesis.</p>
 
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Characterizing the  behavior of the upper tail of the size distribution of banks is an important prerequisite to quantitatively assessing the potential costs and benefits from continued concentration of the U.S. banking sector.</p>
+<p>Why? Strong empirical evidence from <a href="http://www.uvm.edu/~pdodds/files/papers/others/2001/axtell2001a.pdf">Axtell (<em>Science</em>, 2001)</a> (and <em>many</em> others!) that distribution of <em>firm sizes</em> is well decribed by Zipf's Law. Maybe banks are like firms?</p>
 
 </div>
 </div>
@@ -303,26 +314,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Null hypothesis: Zipf's Law </h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Why? Strong empirical evidence from ???, ???, and ??? that distribution of firm sizes is well decribed by Zipf's Law.</p>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2> Data </h2>
+<h1> Data </h1>
 </div>
 </div>
 </div></section><section>
@@ -331,7 +323,17 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><p>Data used in this study are taken from the <a href="http://www2.fdic.gov/sdi/index.asp">Statistics on Depository Institutions (SDI)</a> database maintained by the U.S. Federal Deposit Insurance Corporation (FDIC).<p></p>
+<h3> Statistics on Depository Institutions </h3><p><p>Data used in this study are taken from the <a href="http://www2.fdic.gov/sdi/index.asp">Statistics on Depository Institutions (SDI)</a> database maintained by the U.S. Federal Deposit Insurance Corporation (FDIC).<p></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>FDIC makes it hard to access the SDI data in bulk...so I wrote a little Python scripts to crawl the FDIC's website and download the data, and format it into a Pandas Panel object.</p>
 
 </div>
 </div>
@@ -347,7 +349,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</aside></section><section>
+</aside></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -390,13 +392,13 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 </div>
 </div>
 </div>
-</aside></section></section><section><section>
+</aside></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2> Key features of the data </h2>
+<h2>Significant agglomeration within the U.S. banking sector...</h2>
 </div>
 </div>
 </div></section><section>
@@ -405,7 +407,7 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>INSERT PLOT SHOWING TRENDS IN NUMBER OF BANKS!</p>
+<p><img src="./assets/img/number-fdic-regulated-banks.jpg" alt="Effect of M&A" width=1000></p>
 
 </div>
 </div>
@@ -415,7 +417,17 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./Market_shares_of_largest_bank.png" alt="???" width=400></p>
+<p><img src="./assets/img/largest-bank-market-share.jpg" alt="Market share of largest bank" width=1000></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./assets/img/nlargest-banks-market-share.jpg" alt="Market share of 10 largest banks" width=1000></p>
 
 </div>
 </div>
@@ -426,10 +438,11 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Significant agglomeration within the U.S. banking sector over the last 20+ years.</h3><p>Key stats...</p>
+<p><h2> Summary </h2>
+Major consolidation of the U.S. banking sector over the past 20+ years...</p>
 <ul>
-  <li>Q1 1992: $\approx$ 14,000 banks in the data; largest bank (Citibank), controlled $\approx$ 3.5% of all U.S. banking assets.</li>
-  <li>Q4 2011, $\approx$ 7,000 banks remain; largest bank (now JP Morgan-Chase), controlled $\approx$ 13% of all U.S. banking assets.</li>
+  <li>Q1 1992: $\approx$ 14,000 banks in the data; largest bank (Citibank), controlled $\approx$ 4% of all U.S. banking assets.</li>
+  <li>Q3 2015, $\approx$ 6,000 banks remain; largest bank (now JP Morgan-Chase), controlled $\approx$ 13% of all U.S. banking assets.</li>
   <li>"Jumps" in the share of assets and liabilities controlled by the largest U.S. bank all occurred because of mergers between large banks:
     <ul>
       <li>1999: Nations Bank (largest U.S. bank in 1999), merged with Bank of America.</li> 
@@ -437,32 +450,8 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
       <li>2008: JPMorgan-Chase acquired both Bear Stearns and Washington Mutual</li>
     </ul>
   </li>
-  <li>"Jumps" in market shares also hint at another important stylized fact: there seems to be no preferred scale for bank mergers.</li>
-</ul><p>This figure shows the fraction of total U.S. banking assets, loans, liabilities, deposits, equity, and employees controlled by the single largest bank from 1992 to 2011.</p>
-<ul>
-  <li>Monetary figures are first deflated and then re-scaled by dividing through by banking sector totals relative to 2011.</li>
-</ul>
-</div>
-</div>
-</div>
-</aside></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./Measures_of_bank_size.png" alt="???" width=400></p>
-
-</div>
-</div>
-</div><aside class="notes">
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Extent of agglomeration within the banking sector even more dramatic when one examines the market shares held by the ten largest U.S. banks.</p>
+  <li>"Jumps" in market shares also hint at another important stylized fact: there seems to be no preferred scale for bank mergers and acquisitions.</li>
+</ul><p>...extent of agglomeration within the banking sector even more dramatic when one examines the market shares held by the ten largest U.S. banks.</p>
 <ul>
   <li>Market share of 10 largest banks has more than doubled from less than 20% to roughly 50%.</li>
 </ul>
@@ -475,26 +464,7 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>...distributions are heavily skewed!</h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./Normed_Assets_density_1992_2011.png" alt="???" width=400></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./Survival_functions_normed_loans_1992-2011.png" alt="Upper ECDF for loans and leases (net)" width=400></p>
+<p><img src="./assets/img/sf-various-size-measures.jpg" alt="Survival functions for various size measures" width=1000></p>
 
 </div>
 </div>
@@ -513,7 +483,7 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Follow the methodology advocated by <a href="http://arxiv.org/abs/0706.1062">Clauset, Shalizi, and Newman (SIAM, 2009)...</a></p>
+<p>Follow the methodology advocated by <a href="http://arxiv.org/abs/0706.1062">Clauset et al (SIAM, 2009)...</a></p>
 
 </div>
 </div>
@@ -523,29 +493,9 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> Don't use OLS, use maximum likelihood!</h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For a given value of $x_{min}$, the maximum likelihood estimator for the scaling exponent is</p>
-$$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{min}}\right)\right]^{-1}. $$
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>But this maximum likelihood estimator holds only for a <em>given</em> value of $x_{min}$...</p>
-<ul>
-  <li>\cite{clauset2009power} suggest estimating $x_{min}$ from the data by choosing a value $\hat{x}_{min}$ that minimizes the "distance" between the empirical distribution of the observed data and the best-fit power law model above $\hat{x}_{min}$.</li>
-</ul>
+<h3> Maximum Likelihood Estimator </h3><p>Assuming data $x_i,\ i=i,\dots,n$ are <em>independent</em>, then, for a given value of $x_{min}$, the maximum likelihood estimator for the scaling exponent is</p>
+$$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{min}}\right)\right]^{-1}. $$<p>The maximum likelihood estimator is equivalent to the Hill Estimator widely used in Extreme Value statistics.</p>
+
 </div>
 </div>
 </div><aside class="notes">
@@ -555,25 +505,16 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In case anyone asks the \cite{clauset2009power} procedure for choosing $x_{min}$ works as follows...</p>
+<p>But this maximum likelihood estimator holds only for a <em>given</em> value of $x_{min}$. The procedure for choosing $x_{min}$ is basically a brute force search:</p>
 <ol>
   <li>Choose a set of candidate threshold parameters, $\Theta$ from the observed data.</li>
   <li>For each $x_{min}^{c} \in \Theta$ obtain an estimate of the scaling exponent $\hat{\alpha}^{c}$ using maximum likelihood and then calculates the Kolmogorov-Smirnov (KS) distance between the empirical distribution of the data above $x_{min}^c$ and the theoretical distribution of a power law with parameters $\hat{\alpha}^{c}$ and $x_{min}^c$.</li>
   <li>Optimal choice for the threshold parameter, $x_{min}$, is the $x_{min}^{*} \in \Theta$ which minimizes the KS distance between the observed data above $x_{min}^{*}$ and the theoretical power law distribution with scaling exponent, $\hat{\alpha}^{*}$.</li>
-</ol><p>In order to get estimates of parameter uncertainty that accurately take into account the flexibility introduced by the joint estimation of $\alpha$ and $x_{min}$, standard errors and confidence intervals for the parameter estimates are estimated using a basic non-parametric bootstrap procedure detailed in \cite{davison1997bootstrap}.</p>
+</ol><p>In order to get estimates of parameter uncertainty that accurately take into account the flexibility introduced by the joint estimation of $\alpha$ and $x_{min}$, standard errors and confidence intervals for the parameter estimates are estimated using a basic non-parametric bootstrap procedure.</p>
 </div>
 </div>
 </div>
 </aside></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3>Don't forget to assess goodness of fit for the power law model?</h3>
-</div>
-</div>
-</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -582,35 +523,14 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 <h3>Don't forget to test alternative hypotheses!</h3>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I consider three common alternative distributions for heavy-tailed data: the log-normal, stretched-exponential, and power law with an exponential cut-off; and one thin-tailed alternative: the exponential distribution.</p>
-<p>Test these alternatives off against the power law model against several alternative hypotheses using \cite{vuong1989likelihood} likelihood ratio tests. The \cite{vuong1989likelihood} likelihood procedure comes in two flavors... depending on whether or not the distribution chosen as the null hypothesis is <code>nested'' within the class of distributions chosen as the alternative hypothesis.   Of the alternatives considered, all but the power law with an exponential cut-off make use of the</code>non-nested'' flavor of the \cite{vuong1989likelihood} test.</p>
+<p>Not enough just to fit a power law distrubtion some data and write a paper...there might be distributions that are an even better fit!</p>
 
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I implement the \cite{vuong1989likelihood} likelihood ratio test in two steps.  First I consider the two-sided null hypothesis that each of the power law and the alternative are equally far from the true distribution against a general alternative.  If I reject this two-sided null hypothesis, then I conclude that one of the power law or the alternative is preferred (given the data).  Following a rejection of the two-sided null, I then move to test a one-sided null hypothesis of a power law against the alternative distribution directly.  A rejection of the two-sided null hypothesis, followed by a failure to reject the one-sided null hypothesis of a power law leads me to conclude that the data are sufficient to distinguish between the power law and the considered alternative, and the the power law model if preferred.</p>
-<p>A major advantage of using the \cite{vuong1989likelihood} likelihood ratio approach over the classic \cite{wilks1938large} likelihood ratio test is that the former will alert the researcher to the possibility that the data are not sufficient to favor either the power law or the alternative model.</p>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Results</h2>
 </div>
 </div>
 </div></section><section>
@@ -619,7 +539,13 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Parameter estimates</h3>
+<p>I consider three common alternative distributions for heavy-tailed data...</p>
+<ul>
+  <li>log-normal</li>
+  <li>stretched-exponential (i.e., Weibull)</li>
+  <li>truncated power law (i.e., power law with an exponential cut-off)</li>
+</ul><p>...and one thin-tailed alternative: the exponential distribution.</p>
+
 </div>
 </div>
 </div></section><section>
@@ -628,8 +554,13 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./Estimated_Scaling_Exponents.png" alt="Estimated scaling exponents"></p>
+<p>I use a <a href="https://en.wikipedia.org/wiki/Vuong%27s_closeness_test">Vuong likelihood ratio test</a> implemented in two steps to test off the power law model against various alternatives...</p>
+<ol>
+  <li> Consider the two-sided null hypothesis that each of the power law and the alternative are equally far from the "true distribution" against a general alternative.  If I reject this two-sided null hypothesis, then I conclude that one of the power law or the alternative is preferred (given the data).</li>
+  <li> Second I consider a one-sided null hypothesis of a power law against the alternative distribution directly.</li>
+</ol>
 
+<p>A rejection of the two-sided null hypothesis, followed by a failure to reject the one-sided null hypothesis of a power law implies the data are sufficient to distinguish between the power law and the considered alternative, and the the power law model if preferred.</p>
 </div>
 </div>
 </div><aside class="notes">
@@ -639,25 +570,71 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h3>Tail of the size distribution is <em>too heavy</em> to be consistent with Zipf's Law</h3></p>
-<p><p>Figure reports estimation results for the scaling exponent $\alpha$...<p></p>
+<p>A major advantage of using the Vuong likelihood ratio test over the classic likelihood ratio test is that the former will alert the researcher to the possibility that the data are not sufficient to favor either the power law or the alternative model.</p>
+
+</div>
+</div>
+</div>
+</aside></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Results</h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Parameter estimates</h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./assets/img/estimated-scaling-exponents.jpg" alt="Estimated scaling exponents"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./assets/img/estimated-scaling-threshold.jpg" alt="Estimated scaling thresholds"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h2>Summary</h2></p>
 <ul>
-  <li>Tail of the size distribution is so heavy that the mean of the best-fitting power law model is undefined! There is no such thing as an "average" sized bank in the U.S.!</li>
-  <li>Only measure of bank size broadly consistent with Zipf's Law is number of employees.</li>
-  <li>When either `asset`, `lnlsnet`, or `liab` are used as the measure of bank size $\hat{\alpha}$ is roughly constant across time.</li>
-  <li>When `dep` are used as the measure of bank size the $\hat{\alpha}$ is slightly larger (though still significantly less than $\alpha=2$).</li>
-  <li> Only measure of size for which there is a clear trend in $\hat{\alpha}$ is `eqtot`. The negative trend indicates that U.S banking sector equity holdings are becoming increasingly concentrated over time.
+  <li>For most size measures, in most quarters, the tail of the size distribution is so heavy that the mean of the best-fitting power law model is undefined! There is no such thing as an "average" sized large bank in the U.S.!</li>
+  <li>Only measure of bank size even reasonably consistent with Zipf's Law is number of employees.</li>
+  <li>When either total assets or total liabilities are used as the measure of bank size $\hat{\alpha}$ is roughly constant across time. Estimate using total loans has been constant since about Q1 2000 onwards.</li>
+  <li>Clear negative trends in $\hat{\alpha}$ when using either total deposits or total equity. The negative trend indicates that U.S banking sector deposits and equity holdings are becoming increasingly concentrated over time.
 </ul>
 </div>
 </div>
-</div>
-</aside></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Goodness of fit tests</h3>
+<h2>Likelihood Ratio tests</h2>
 </div>
 </div>
 </div></section><section>
@@ -666,36 +643,45 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Likelihood Ratio tests</h3>
+<p><img src="./assets/img/power-law-vs-exponential-llr-results.jpg" alt="Power law vs exponential"></p>
+
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./Asset_distributions_with_power_law_vs_alternatives(2011).png" alt="Estimated scaling exponents"></p>
+<p><img src="./assets/img/power-law-vs-weibull-llr-results.jpg" alt="Power law vs weibull"></p>
 
 </div>
 </div>
-</div><aside class="notes">
-
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Summary of likelihood ratio testing results...</p>
+<p><img src="./assets/img/power-law-vs-truncated-power-law-llr-results.jpg" alt="Power law vs truncated power law"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h3>Summary</h3></p>
 <ul>
-  <li>Both the exponential distribution and the stretched exponential distribution are inferior to the power law model.</li>
+  <li>Power law model clearly preferred to both the exponential distribution and the stretched exponential (Weibull) distributions (not at all surprising...but a nice sanity check).</li>
   <li>Given the data it is generally not possible to distinguish between the power law and the log-normal alternative.</li>
   <li>Finally, while the power law distribution with an exponential cut-off is preferred over the pure power law model in the early 1990's, this distribution becomes less plausible over time.</li>
 </ul>
 </div>
 </div>
-</div>
-</aside></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -712,8 +698,7 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><p>Statistically significant departures from Zipf's Law for most measures of bank size in most years...</p></p>
 <ul>
-  <li>$\hat{\alpha} \approx 1.9 < 2$ indicates that U.S. the banking sector is too concentrated to be consistent with the predictions of Zipf's Law.</li>
-  <li>Goodness-of-fit tests document statistically significant deviations from a pure power law model, it is not clear whether or not the observed deviations are economicially significant.</li>
+  <li>$\hat{\alpha}$ consistently less than 2 indicates that U.S. the banking sector is too concentrated to be consistent with the predictions of Zipf's Law.</li>
   <li>Likelihood ratio testing results indicate that the power law model out-performs other distributions commonly used to model heavy-tailed data.</li>
 </ul>
 </div>
@@ -728,35 +713,6 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 
 </div>
 </div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3>Implications for empirical and theoretical business cycle research?</h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>\cite{gabaix2011granular} posits that, if upper tail of the firm size distribution is sufficiently heavy, significant variation in aggregate macroeconomic time series could be explained by idiosyncratic shocks to individual firms.</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Presumbably there is a "granularity hypothesis" for the banking sector where idiosyncratic shocks to systematically important financial institutions (SIFIs) could also explain some variation in aggregate macroeconomic time series.</p>
-
-</div>
-</div>
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -766,16 +722,7 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 <h2> Thanks! </h2>
 </div>
 </div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2> Questions? </h2>
-</div>
-</div>
-</div></div></section></section>
+</div></section></section>
 </div>
 </div>
 
