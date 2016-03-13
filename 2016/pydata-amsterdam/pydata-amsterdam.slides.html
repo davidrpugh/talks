@@ -247,6 +247,32 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">autoreload</span> <span class="mi">2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -411,26 +437,6 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./assets/img/largest-bank-market-share.jpg" alt="Market share of largest bank" width=1000></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./assets/img/nlargest-banks-market-share.jpg" alt="Market share of 10 largest banks" width=1000></p>
-
-</div>
-</div>
 </div><aside class="notes">
 
 <div class="cell border-box-sizing text_cell rendered">
@@ -459,6 +465,26 @@ Major consolidation of the U.S. banking sector over the past 20+ years...</p>
 </div>
 </div>
 </aside></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./assets/img/largest-bank-market-share.jpg" alt="Market share of largest bank" width=1000></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./assets/img/nlargest-banks-market-share.jpg" alt="Market share of 10 largest banks" width=1000></p>
+
+</div>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -520,32 +546,7 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Don't forget to test alternative hypotheses!</h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Not enough just to fit a power law distrubtion some data and write a paper...there might be distributions that are an even better fit!</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I consider three common alternative distributions for heavy-tailed data...</p>
-<ul>
-  <li>log-normal</li>
-  <li>stretched-exponential (i.e., Weibull)</li>
-  <li>truncated power law (i.e., power law with an exponential cut-off)</li>
-</ul><p>...and one thin-tailed alternative: the exponential distribution.</p>
-
+<h3>Likelihood Ratio Tests</h3>
 </div>
 </div>
 </div></section><section>
@@ -676,7 +677,6 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 <p><h3>Summary</h3></p>
 <ul>
   <li>Power law model clearly preferred to both the exponential distribution and the stretched exponential (Weibull) distributions (not at all surprising...but a nice sanity check).</li>
-  <li>Given the data it is generally not possible to distinguish between the power law and the log-normal alternative.</li>
   <li>Finally, while the power law distribution with an exponential cut-off is preferred over the pure power law model in the early 1990's, this distribution becomes less plausible over time.</li>
 </ul>
 </div>
