@@ -362,7 +362,7 @@ $$ p(x; x_{min}, \alpha) = \left(\frac{\alpha - 1}{x_{min}}\right)\left(\frac{x_
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Interested in the <em>shape</em> of the size distribution: I deflate and then re-scale each measure of bank size by dividing by banking sector totals relative to some base year, $T$...</p>
-$$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\right)S_{i,t}^{raw}. $$
+$$  S_{i,t}^{norm} = \left(\frac{\sum_{i}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\right)S_{i,t}^{raw}. $$
 </div>
 </div>
 </div><aside class="notes">
@@ -400,8 +400,27 @@ $$  S_{i,t}^{norm} = \left(\frac{\sum_{j}S_{i, T}^{raw}}{\sum_{j}S_{j,t}^{raw}}\
 
 </div>
 </div>
-</div><aside class="notes">
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./assets/img/largest-bank-market-share.jpg" alt="Market share of largest bank" width=1000></p>
 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./assets/img/nlargest-banks-market-share.jpg" alt="Market share of 10 largest banks" width=1000></p>
+
+</div>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -420,31 +439,7 @@ Major consolidation of the U.S. banking sector over the past 20+ years...</p>
     </ul>
   </li>
   <li>"Jumps" in market shares also hint at another important stylized fact: there seems to be no preferred scale for bank mergers and acquisitions.</li>
-</ul><p>...extent of agglomeration within the banking sector even more dramatic when one examines the market shares held by the ten largest U.S. banks.</p>
-<ul>
-  <li>Market share of 10 largest banks has more than doubled from less than 20% to roughly 50%.</li>
 </ul>
-</div>
-</div>
-</div>
-</aside></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./assets/img/largest-bank-market-share.jpg" alt="Market share of largest bank" width=1000></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./assets/img/nlargest-banks-market-share.jpg" alt="Market share of 10 largest banks" width=1000></p>
-
 </div>
 </div>
 </div></section><section>
@@ -565,19 +560,6 @@ $$ \hat{\alpha} = 1 +  n\left[\sum_{i=1}^{n}\mathrm{ln}\ \left(\frac{x_{i}}{x_{m
 <h2> Questions? </h2>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div></section></section>
 </div>
 </div>
